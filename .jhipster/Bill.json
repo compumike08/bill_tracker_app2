@@ -1,0 +1,65 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "billAmountsOwed",
+            "otherEntityName": "billAmountsOwed",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "bill"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "billTransactionLedger",
+            "otherEntityName": "billTransactionLedger",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "bill"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "bill_name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "bill_amount",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "bill_statement_date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "bill_due_date",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "is_bill_paid",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "is_bill_reimbursed",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151018222814",
+    "dto": "mapstruct",
+    "pagination": "no"
+}

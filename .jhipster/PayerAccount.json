@@ -1,0 +1,35 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "transactionAuditLog",
+            "otherEntityName": "transactionAuditLog",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "payerAccount"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "payerTransactionLedger",
+            "otherEntityName": "payerTransactionLedger",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "payerAccount"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "billAmountsOwed",
+            "otherEntityName": "billAmountsOwed",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "payerAccount"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "payer_acct_name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151018221509",
+    "dto": "mapstruct",
+    "pagination": "no"
+}

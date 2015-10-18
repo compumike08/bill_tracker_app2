@@ -1,0 +1,82 @@
+<div>
+
+    <h2>TransactionAuditLogs</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="transactionAuditLog.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new TransactionAuditLog</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteTransactionAuditLogConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(transactionAuditLog.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this TransactionAuditLog?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Debit_amount</th>
+                    <th>Credit_amount</th>
+                    <th>Trsctn_datetime</th>
+                    <th>payerAccount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="transactionAuditLog in transactionAuditLogs">
+                    <td><a ui-sref="transactionAuditLog.detail({id:transactionAuditLog.id})">{{transactionAuditLog.id}}</a></td>
+                    <td>{{transactionAuditLog.debit_amount}}</td>
+                    <td>{{transactionAuditLog.credit_amount}}</td>
+                    <td>{{transactionAuditLog.trsctn_datetime}}</td>
+                    <td>
+                        <a ui-sref="payerAccount.detail({id:transactionAuditLog.payerAccountId})">{{transactionAuditLog.payerAccountId}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="transactionAuditLog.detail({id:transactionAuditLog.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="transactionAuditLog.edit({id:transactionAuditLog.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(transactionAuditLog.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

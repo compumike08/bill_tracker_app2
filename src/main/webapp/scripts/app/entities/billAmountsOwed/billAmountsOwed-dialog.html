@@ -1,0 +1,59 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBillAmountsOwedLabel">Create or edit a BillAmountsOwed</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="billAmountsOwed.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_amount_owed">Amount_owed</label>
+            <input type="number" class="form-control" name="amount_owed" id="field_amount_owed"
+                    ng-model="billAmountsOwed.amount_owed"
+                    required>
+
+            <div ng-show="editForm.amount_owed.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.amount_owed.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.amount_owed.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_payerAccount">payerAccount</label>
+            
+            <select class="form-control" id="field_payerAccount" name="payerAccount" ng-model="billAmountsOwed.payerAccountId" ng-options="payerAccount.id as payerAccount.id for payerAccount in payeraccounts">
+                <option value=""></option>
+            </select>
+            
+        </div>
+        <div class="form-group">
+            <label for="field_bill">bill</label>
+            
+            <select class="form-control" id="field_bill" name="bill" ng-model="billAmountsOwed.billId" ng-options="bill.id as bill.id for bill in bills">
+                <option value=""></option>
+            </select>
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

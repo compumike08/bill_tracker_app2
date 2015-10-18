@@ -1,0 +1,99 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBillTransactionLedgerLabel">Create or edit a BillTransactionLedger</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="billTransactionLedger.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_bill_trsctn_datetime">Bill_trsctn_datetime</label>
+            <input type="datetime-local" class="form-control" name="bill_trsctn_datetime" id="field_bill_trsctn_datetime"
+                    ng-model="billTransactionLedger.bill_trsctn_datetime" ng-model-options="{timezone: 'UTC'}"
+                    required>
+
+            <div ng-show="editForm.bill_trsctn_datetime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_trsctn_datetime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bill_trsctn_datetime.$error.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill_trsctn_amount">Bill_trsctn_amount</label>
+            <input type="number" class="form-control" name="bill_trsctn_amount" id="field_bill_trsctn_amount"
+                    ng-model="billTransactionLedger.bill_trsctn_amount"
+                    required>
+
+            <div ng-show="editForm.bill_trsctn_amount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_trsctn_amount.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bill_trsctn_amount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill_trsctn_type">Bill_trsctn_type</label>
+            <select class="form-control" name="bill_trsctn_type" ng-model="billTransactionLedger.bill_trsctn_type" id="field_bill_trsctn_type" required>
+                <option value="DEBIT">DEBIT</option>
+                <option value="CREDIT">CREDIT</option>
+            </select>
+
+            <div ng-show="editForm.bill_trsctn_type.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_trsctn_type.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_trsctn_pair_id">Trsctn_pair_id</label>
+            <input type="number" class="form-control" name="trsctn_pair_id" id="field_trsctn_pair_id"
+                    ng-model="billTransactionLedger.trsctn_pair_id"
+                    required>
+
+            <div ng-show="editForm.trsctn_pair_id.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trsctn_pair_id.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trsctn_pair_id.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill">bill</label>
+            
+            <select class="form-control" id="field_bill" name="bill" ng-model="billTransactionLedger.billId" ng-options="bill.id as bill.id for bill in bills">
+                <option value=""></option>
+            </select>
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

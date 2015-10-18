@@ -1,0 +1,85 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myTransactionAuditLogLabel">Create or edit a TransactionAuditLog</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="transactionAuditLog.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_debit_amount">Debit_amount</label>
+            <input type="number" class="form-control" name="debit_amount" id="field_debit_amount"
+                    ng-model="transactionAuditLog.debit_amount"
+                    required>
+
+            <div ng-show="editForm.debit_amount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.debit_amount.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.debit_amount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_credit_amount">Credit_amount</label>
+            <input type="number" class="form-control" name="credit_amount" id="field_credit_amount"
+                    ng-model="transactionAuditLog.credit_amount"
+                    required>
+
+            <div ng-show="editForm.credit_amount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.credit_amount.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.credit_amount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_trsctn_datetime">Trsctn_datetime</label>
+            <input type="datetime-local" class="form-control" name="trsctn_datetime" id="field_trsctn_datetime"
+                    ng-model="transactionAuditLog.trsctn_datetime" ng-model-options="{timezone: 'UTC'}"
+                    required>
+
+            <div ng-show="editForm.trsctn_datetime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trsctn_datetime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trsctn_datetime.$error.datetimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_payerAccount">payerAccount</label>
+            
+            <select class="form-control" id="field_payerAccount" name="payerAccount" ng-model="transactionAuditLog.payerAccountId" ng-options="payerAccount.id as payerAccount.id for payerAccount in payeraccounts">
+                <option value=""></option>
+            </select>
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

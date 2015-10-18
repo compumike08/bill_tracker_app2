@@ -1,0 +1,84 @@
+<div>
+
+    <h2>Bills</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="bill.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Bill</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteBillConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(bill.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this Bill?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Bill_name</th>
+                    <th>Bill_amount</th>
+                    <th>Bill_statement_date</th>
+                    <th>Bill_due_date</th>
+                    <th>Is_bill_paid</th>
+                    <th>Is_bill_reimbursed</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bill in bills">
+                    <td><a ui-sref="bill.detail({id:bill.id})">{{bill.id}}</a></td>
+                    <td>{{bill.bill_name}}</td>
+                    <td>{{bill.bill_amount}}</td>
+                    <td>{{bill.bill_statement_date}}</td>
+                    <td>{{bill.bill_due_date}}</td>
+                    <td>{{bill.is_bill_paid}}</td>
+                    <td>{{bill.is_bill_reimbursed}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="bill.detail({id:bill.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="bill.edit({id:bill.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(bill.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

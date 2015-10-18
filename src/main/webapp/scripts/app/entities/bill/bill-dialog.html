@@ -1,0 +1,96 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBillLabel">Create or edit a Bill</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="bill.id" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="field_bill_name">Bill_name</label>
+            <input type="text" class="form-control" name="bill_name" id="field_bill_name"
+                    ng-model="bill.bill_name"
+                    required>
+
+            <div ng-show="editForm.bill_name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_name.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill_amount">Bill_amount</label>
+            <input type="number" class="form-control" name="bill_amount" id="field_bill_amount"
+                    ng-model="bill.bill_amount"
+                    required>
+
+            <div ng-show="editForm.bill_amount.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_amount.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bill_amount.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill_statement_date">Bill_statement_date</label>
+            <input type="date" class="form-control" name="bill_statement_date" id="field_bill_statement_date"
+                    ng-model="bill.bill_statement_date"
+                    required>
+
+            <div ng-show="editForm.bill_statement_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_statement_date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_bill_due_date">Bill_due_date</label>
+            <input type="date" class="form-control" name="bill_due_date" id="field_bill_due_date"
+                    ng-model="bill.bill_due_date"
+                    required>
+
+            <div ng-show="editForm.bill_due_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bill_due_date.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_is_bill_paid">Is_bill_paid</label>
+            <input type="checkbox" class="form-control" name="is_bill_paid" id="field_is_bill_paid"
+                    ng-model="bill.is_bill_paid"
+                    >
+
+        </div>
+        <div class="form-group">
+            <label for="field_is_bill_reimbursed">Is_bill_reimbursed</label>
+            <input type="checkbox" class="form-control" name="is_bill_reimbursed" id="field_is_bill_reimbursed"
+                    ng-model="bill.is_bill_reimbursed"
+                    >
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span>TransactionAuditLog</span> {{transactionAuditLog.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Debit_amount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transactionAuditLog.debit_amount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Credit_amount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transactionAuditLog.credit_amount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Trsctn_datetime</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{transactionAuditLog.trsctn_datetime}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>payerAccount</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="payerAccount.detail({id:transactionAuditLog.payerAccountId})">{{transactionAuditLog.payerAccountId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
