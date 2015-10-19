@@ -3,6 +3,7 @@ package com.michael.mh.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.michael.mh.domain.BillAmountsOwed;
 import com.michael.mh.repository.BillAmountsOwedRepository;
+import com.michael.mh.service.BillAmountsOwedByBillService;
 import com.michael.mh.web.rest.util.HeaderUtil;
 import com.michael.mh.web.rest.dto.BillAmountsOwedDTO;
 import com.michael.mh.web.rest.mapper.BillAmountsOwedMapper;
@@ -38,6 +39,9 @@ public class BillAmountsOwedResource {
 
     @Inject
     private BillAmountsOwedMapper billAmountsOwedMapper;
+
+    @Inject
+    private BillAmountsOwedByBillService billAmountsOwedByBillService;
 
     /**
      * POST  /billAmountsOweds -> Create a new billAmountsOwed.
@@ -107,6 +111,21 @@ public class BillAmountsOwedResource {
                 billAmountsOwedDTO,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * GET  /billAmountsOweds -> get all the billAmountsOweds.
+     */
+    @RequestMapping(value = "/billAmountsOweds/bills/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional(readOnly = true)
+    public List<BillAmountsOwedDTO> getBillAmountsOwedByBillId(@PathVariable Long id) {
+        log.debug("REST request to get all BillAmountsOweds associated with bill : {}", id);
+        return billAmountsOwedByBillService.findBillAmountsOwedByBillId(id).stream()
+            .map(billAmountsOwed -> billAmountsOwedMapper.billAmountsOwedToBillAmountsOwedDTO(billAmountsOwed))
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**
