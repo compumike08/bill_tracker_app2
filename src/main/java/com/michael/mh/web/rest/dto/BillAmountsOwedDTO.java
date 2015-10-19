@@ -20,6 +20,8 @@ public class BillAmountsOwedDTO implements Serializable {
 
     private Long payerAccountId;
 
+    private String payerAccountName;
+
     private Long billId;
 
     public Long getId() {
@@ -45,6 +47,10 @@ public class BillAmountsOwedDTO implements Serializable {
     public void setPayerAccountId(Long payerAccountId) {
         this.payerAccountId = payerAccountId;
     }
+
+    public String getPayerAccountName() { return payerAccountName; }
+
+    public void setPayerAccountName(String payerAccountName) { this.payerAccountName = payerAccountName; }
 
     public Long getBillId() {
         return billId;

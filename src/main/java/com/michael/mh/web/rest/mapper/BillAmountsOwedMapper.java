@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface BillAmountsOwedMapper {
 
     @Mapping(source = "payerAccount.id", target = "payerAccountId")
+    @Mapping(source = "payerAccount.payer_acct_name", target = "payerAccountName")
     @Mapping(source = "bill.id", target = "billId")
     BillAmountsOwedDTO billAmountsOwedToBillAmountsOwedDTO(BillAmountsOwed billAmountsOwed);
 
