@@ -15,9 +15,9 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BillAmountsOwedByBillServiceService {
+public class BillAmountsOwedByBillService {
 
-    private final Logger log = LoggerFactory.getLogger(BillAmountsOwedByBillServiceService.class);
+    private final Logger log = LoggerFactory.getLogger(BillAmountsOwedByBillService.class);
 
     @Inject
     private BillRepository billRepository;
