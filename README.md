@@ -1,2 +1,5 @@
-README for bill_tracker_app2
+Bill Tracker App 2
 ==========================
+
+## License
+See [LICENSE.md](LICENSE.md) file.
