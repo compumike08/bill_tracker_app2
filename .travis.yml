@@ -1,6 +1,6 @@
 language: java
-node_js:
-  - "4.2.1"
+jdk:
+  - oraclejdk8
 install: mvn clean package -DskipTests=true
 notifications:
   webhooks:
