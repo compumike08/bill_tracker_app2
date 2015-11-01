@@ -7,13 +7,15 @@ angular.module('billTrackerApp2App')
             Bill.get({id: id}, function(result) {
                 $scope.bill = result;
             });
+        };
 
+        $scope.getBillAmountsOwedByBill = function(id){
             BillAmountsOwedByBill.query({id: id}, function(result){
                 $scope.bill.billAmountsOwed = result;
             });
-        };
+        }
 
-        $scope.load($scope.bill.id);
+        $scope.getBillAmountsOwedByBill($stateParams.id);
 
         $rootScope.$on('billTrackerApp2App:billUpdate', function(event, result) {
             $scope.bill = result;
