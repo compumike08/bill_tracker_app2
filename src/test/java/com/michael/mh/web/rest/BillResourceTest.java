@@ -112,7 +112,7 @@ public class BillResourceTest {
         List<Bill> bills = billRepository.findAll();
         assertThat(bills).hasSize(databaseSizeBeforeCreate + 1);
         Bill testBill = bills.get(bills.size() - 1);
-        assertThat(testBill.getBill_name()).isEqualTo("THIS TEST SHOULD FAIL");
+        assertThat(testBill.getBill_name()).isEqualTo(DEFAULT_BILL_NAME);
         assertThat(testBill.getBill_amount()).isEqualTo(DEFAULT_BILL_AMOUNT);
         assertThat(testBill.getBill_statement_date()).isEqualTo(DEFAULT_BILL_STATEMENT_DATE);
         assertThat(testBill.getBill_due_date()).isEqualTo(DEFAULT_BILL_DUE_DATE);
