@@ -75,7 +75,7 @@ describe('Controllers Tests ', function () {
                         'name': 'db',
                         'status': 'UP',
                         'details': {
-                            'database': 'THIS TEST SHOULD FAIL',
+                            'database': 'H2',
                             'hello': '1'
                         }
                     },
